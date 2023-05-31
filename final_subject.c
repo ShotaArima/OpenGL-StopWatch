@@ -27,7 +27,7 @@
 	void resetview(void);
 
 //ライトの位置の宣言
-	float light_position[] = {0.0, 1.0, 0.0, 0.0 };
+	float light_position[] = {0.0, 1.0, 0.0, 0.0};
 
 //位置についての変数の宣言
 	int mButton;
@@ -291,6 +291,7 @@ void resetview(void)
 	azimuth=30.0;
 }
 
+//main関数
 int main(int argc, char** argv)
 {
 	glutInit(&argc,argv);
