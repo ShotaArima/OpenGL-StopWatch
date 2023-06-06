@@ -18,7 +18,6 @@
 	float theta_min=0;
 
 //時間系変数の宣言
-	time_t start_time;
 	time_t current_time;
 	time_t prev_time=0;
 
@@ -70,7 +69,7 @@ void display(void)
 	glEnable(GL_DEPTH_TEST);/*Z Buffer enable*/
 	glEnable(GL_LIGHTING);/*Shading計算の開始*/
 	glLightfv(GL_LIGHT0, GL_POSITION,light_position);
-	glRotatef(-150.0 ,0.0 ,1.0 ,0.0);//theta角にx軸,y軸,z軸に回転させる
+	glRotatef(-150.0 ,0.0 ,1.0 ,0.0);//-150角にx軸,y軸,z軸に回転させる
 	
 //秒針の記述
 
@@ -154,7 +153,7 @@ void display(void)
 		for(int i=0;i<12;i++)
 		{
 			glPushMatrix();
-				glRotatef(i*30 ,0.0 ,1.0 ,0.0);//6°毎にx軸,y軸,z軸に回転させる
+				glRotatef(i*30 ,0.0 ,1.0 ,0.0);//30°毎にx軸,y軸,z軸に回転させる
 				glBegin(GL_POLYGON);
 					glVertex3f( 0.017,0.05,0.85);//左下
 					glVertex3f( 0.017,0.05,0.95);//左上
@@ -183,9 +182,6 @@ void idle(void)
 	    //現在時刻の取得⇒スペース押された時刻
 		time_t current_time=time(NULL);
 
-	    //スタート時間からの差を取得
-	    double elapsed_time=difftime(current_time, start_time);
-
 	    //1秒間のタイミングを生成 & 角度の調整
         if (current_time!=prev_time) 
         {
@@ -195,6 +191,7 @@ void idle(void)
     			count_sec=0;
     			count_min++;
     		}
+    		//秒数を表示する
             // printf("%2d:%2d\n",count_min,count_sec);
             prev_time=current_time;
         }
